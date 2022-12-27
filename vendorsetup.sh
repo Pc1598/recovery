@@ -82,6 +82,9 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	# run a process after formatting data to work-around MTP issues
 	export OF_FORCE_CREATE_DATA_MEDIA_ON_FORMAT=1
 
+        # ensure that /sdcard is bind-unmounted before f2fs data repair or format
+        export OF_UNBIND_SDCARD_F2FS=1
+
         # necessary to decrypt FBEv1 ROMs
 	if [ "$FOX_VARIANT" = "FBEv1" ]; then
         export OF_FIX_DECRYPTION_ON_DATA_MEDIA=1
